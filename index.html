@@ -27,18 +27,5 @@
 <p class="p2"><span class="s1"></span><br></p>
 <div class="clock" id="gmtClock">00:00:00</div>
 
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getUTCHours()).padStart(2, '0');
-            const minutes = String(now.getUTCMinutes()).padStart(2, '0');
-            const seconds = String(now.getUTCSeconds()).padStart(2, '0');
-            document.getElementById('gmtClock').innerText = `${hours}:${minutes}:${seconds}`;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock(); // Initial call to prevent delay
-    </script>
-
 </body>
 </html>
