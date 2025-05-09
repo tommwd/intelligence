@@ -41,21 +41,34 @@
         const textElement = document.getElementById(textElementId);
         const definition = document.getElementById(definitionId);
 
+        const match = textElement.textContent.match(/\(([^)]+)\)/);
+        const acronym = match ? match[1].toLowerCase() : null;
+        const targetText = "Sourcing Intelligence";
+        const targetLink = acronym ? `https://tommwd.com/${acronym}` : null;
+
         if (definition.style.display === 'block') {
             definition.style.display = 'none';
             definition.textContent = '';
         } else {
-            const text = "Sourcing Intelligence";
-            let index = 0;
-
             definition.style.display = 'block';
             definition.textContent = '';
 
+            let index = 0;
+
             const typewriterEffect = () => {
-                if (index < text.length) {
-                    definition.textContent += text.charAt(index);
+                if (index < targetText.length) {
+                    definition.textContent += targetText.charAt(index);
                     index++;
                     setTimeout(typewriterEffect, 30);
+                } else if (targetLink) {
+                    const link = document.createElement('a');
+                    link.href = targetLink;
+                    link.target = "_blank"; // Open in new tab
+                    link.textContent = targetText;
+                    link.style.color = 'grey';
+                    link.style.textDecoration = 'none';
+                    definition.textContent = '';
+                    definition.appendChild(link);
                 }
             };
 
@@ -71,5 +84,6 @@
         toggleDefinition('pod-text', 'pod-definition');
     });
 </script>
+
 </body>
 </html>
