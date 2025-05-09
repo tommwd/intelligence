@@ -41,13 +41,19 @@
 
 
 <script>
+    const definitions = {
+        gi: "Sourcing Intelligence",
+        pod: "Sourcing Intelligence",
+        opp: "Access Intelligence"
+    };
+
     const toggleDefinition = (textElementId, definitionId) => {
         const textElement = document.getElementById(textElementId);
         const definition = document.getElementById(definitionId);
 
         const match = textElement.textContent.match(/\(([^)]+)\)/);
         const acronym = match ? match[1].toLowerCase() : null;
-        const targetText = "Sourcing Intelligence";
+        const targetText = acronym && definitions[acronym] ? definitions[acronym] : "Undefined";
         const targetLink = acronym ? `https://tommwd.com/${acronym}` : null;
 
         if (definition.style.display === 'block') {
@@ -67,7 +73,7 @@
                 } else if (targetLink) {
                     const link = document.createElement('a');
                     link.href = targetLink;
-                    link.target = "_blank"; // Open in new tab
+                    link.target = "_blank";
                     link.textContent = targetText;
                     link.style.color = 'grey';
                     link.style.textDecoration = 'none';
@@ -88,10 +94,11 @@
         toggleDefinition('pod-text', 'pod-definition');
     });
 
-  document.getElementById('opp-text').addEventListener('click', () => {
+    document.getElementById('opp-text').addEventListener('click', () => {
         toggleDefinition('opp-text', 'opp-definition');
     });
 </script>
+
 
 </body>
 </html>
