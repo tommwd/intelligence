@@ -41,6 +41,9 @@
 <p class="p2"><span class="s1"></span><br></p>
   <p class="p1 clickable-text" id="bmu-text"><span class="s1">British Material Unit (BMU)</span></p>
 <div class="definition" id="bmu-definition">Building Source</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="ug-text"><span class="s1">Unidentified Garment (UG)</span></p>
+<div class="definition" id="ug-definition">Access Intelligence</div>
 
 
 <script>
@@ -48,7 +51,8 @@
         gi: "Sourcing Intelligence",
         pod: "Sourcing Intelligence",
         opp: "Access Intelligence",
-        bmu: "Building Source"
+        bmu: "Building Source",
+        ug: "Access Intelligence"
       
     };
 
@@ -105,6 +109,10 @@
 
   document.getElementById('bmu-text').addEventListener('click', () => {
         toggleDefinition('bmu-text', 'bmu-definition');
+    });
+    
+    document.getElementById('ug-text').addEventListener('click', () => {
+        toggleDefinition('ug-text', 'ug-definition');
     });
 </script>
 
