@@ -1,34 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence</title>
-    <script>
-        // Updated definitions object
-        const definitions = {
-            GI: "Garment Intelligence",
-            UGI: { definition: "Unearthing Garment Intelligence", hidden: true },
-            // other definitions...
-        };
-
-        // Updated toggleDefinition function
-        function toggleDefinition(acronym) {
-            if (acronym === 'GI') {
-                // Logic for GI acronym
-                if (currentDefinition === definitions.GI) {
-                    currentDefinition = definitions.UGI.hidden ? definitions.UGI.definition : definitions.GI;
-                    definitions.UGI.hidden = !definitions.UGI.hidden; // Toggle hidden state
-                } else {
-                    currentDefinition = definitions.GI; // revert back to GI
-                }
-            }
-            // Logic for other acronyms...
-        }
-    </script>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Tom</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; min-height: 14.0px}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000}
+    li.li1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {-webkit-text-stroke: 0px #000000}
+    ul.ul1 {list-style-type: '—  '}
+    .definition {
+        margin: 0; /* Remove extra line spacing */
+        color: grey;
+        display: none;
+        font: 12.0px Helvetica; /* Match font */
+    }
+    .clickable-text {
+        cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to the Intelligence Repository</h1>
-    <p>...</p>
+<p class="p1"><span class="s1"><b>Tom M.W.D.</b></span></p>
+<p class="p1"><a href="https://github.com/tommwd/intelligence" target="_blank" style="text-decoration: none; color: inherit;"><span class="s1">Intelligence</span></a></p>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="gi-text"><span class="s1">Garment Intelligence (GI)</span></p>
+<div class="definition" id="gi-definition">Sourcing Intelligence</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="pod-text"><span class="s1">Proof of Design (POD)</span></p>
+<div class="definition" id="pod-definition">Sourcing Intelligence</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="opp-text"><span class="s1">One Piece Pattern (OPP)</span></p>
+<div class="definition" id="opp-definition">Access Intelligence</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="bmu-text"><span class="s1">British Material Unit (BMU)</span></p>
+<div class="definition" id="bmu-definition">Building Source</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="ug-text"><span class="s1">Unidentified Garment (UG)</span></p>
+<div class="definition" id="ug-definition">Access Intelligence</div>
+
+
+<script>
+    const definitions = {
+        gi: "Access Intelligence",
+        pod: "Sourcing Intelligence",
+        opp: "Access Intelligence",
+        bmu: "Building Source",
+        ug: "Access Intelligence"
+      
+    };
+
+    const toggleDefinition = (textElementId, definitionId) => {
+        const textElement = document.getElementById(textElementId);
+        const definition = document.getElementById(definitionId);
+
+        const match = textElement.textContent.match(/\(([^)]+)\)/);
+        const acronym = match ? match[1].toLowerCase() : null;
+        const targetText = acronym && definitions[acronym] ? definitions[acronym] : "Undefined";
+        const targetLink = acronym ? `https://tommwd.com/${acronym}` : null;
+
+        if (definition.style.display === 'block') {
+            definition.style.display = 'none';
+            definition.textContent = '';
+        } else {
+            definition.style.display = 'block';
+            definition.textContent = '';
+
+            let index = 0;
+
+            const typewriterEffect = () => {
+                if (index < targetText.length) {
+                    definition.textContent += targetText.charAt(index);
+                    index++;
+                    setTimeout(typewriterEffect, 30);
+                } else if (targetLink) {
+                    const link = document.createElement('a');
+                    link.href = targetLink;
+                    link.target = "_blank";
+                    link.textContent = targetText;
+                    link.style.color = 'grey';
+                    link.style.textDecoration = 'none';
+                    definition.textContent = '';
+                    definition.appendChild(link);
+                }
+            };
+
+            typewriterEffect();
+        }
+    };
+
+    document.getElementById('gi-text').addEventListener('click', () => {
+        toggleDefinition('gi-text', 'gi-definition');
+    });
+
+    document.getElementById('pod-text').addEventListener('click', () => {
+        toggleDefinition('pod-text', 'pod-definition');
+    });
+
+    document.getElementById('opp-text').addEventListener('click', () => {
+        toggleDefinition('opp-text', 'opp-definition');
+    });
+
+  document.getElementById('bmu-text').addEventListener('click', () => {
+        toggleDefinition('bmu-text', 'bmu-definition');
+    });
+    
+    document.getElementById('ug-text').addEventListener('click', () => {
+        toggleDefinition('ug-text', 'ug-definition');
+    });
+</script>
+
+
 </body>
 </html>
