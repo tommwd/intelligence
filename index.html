@@ -44,6 +44,12 @@
 <p class="p2"><span class="s1"></span><br></p>
   <p class="p1 clickable-text" id="ug-text"><span class="s1">Unidentified Garment (UG)</span></p>
 <div class="definition" id="ug-definition">Access Intelligence</div>
+<p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="ag-text"><span class="s1">Augmentable Garment (AG)</span></p>
+<div class="definition" id="ag-definition">Access Intelligence</div>
+p class="p2"><span class="s1"></span><br></p>
+  <p class="p1 clickable-text" id="sg-text"><span class="s1">Scannable Garment (SG)</span></p>
+<div class="definition" id="sg#-definition">Access Intelligence</div>
 
 
 <script>
@@ -52,7 +58,9 @@
         pod: "Sourcing Intelligence",
         opp: "Access Intelligence",
         bmu: "Building Source",
-        ug: "Access Intelligence"
+        ug: "Access Intelligence",
+        ag: "Access Intelligence",
+        sg: "Access Intelligence" 
       
     };
 
@@ -113,6 +121,14 @@
     
     document.getElementById('ug-text').addEventListener('click', () => {
         toggleDefinition('ug-text', 'ug-definition');
+    });
+    
+    document.getElementById('ag-text').addEventListener('click', () => {
+        toggleDefinition('ag-text', 'ag-definition');
+    });
+    
+    document.getElementById('sg-text').addEventListener('click', () => {
+        toggleDefinition('sg-text', 'sg-definition');
     });
 </script>
 
